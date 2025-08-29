@@ -268,7 +268,8 @@
         
         // --- UPDATED: Calls our own serverless function ---
         async function callGeminiAPI(prompt) {
-            const url = '/api/gemini'; // This now points to our Vercel function
+            // FIX: Construct an absolute URL to prevent parsing errors when running locally or on Vercel.
+            const url = new URL('/api/gemini', window.location.origin).href;
             
             try {
                 const response = await fetch(url, {
@@ -674,5 +675,9 @@
 
 </body>
 </html>
+
+
+
+
 
 
