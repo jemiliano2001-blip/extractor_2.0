@@ -1,50 +1,48 @@
-// Este código se ejecuta en un servidor, no en el navegador.
+// Importa el SDK de Google Generative AI
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-export default async function handler(request, response) {
-  // 1. Solo permitir peticiones POST
-  if (request.method !== 'POST') {
-    return response.status(405).json({ error: 'Method Not Allowed' });
+// Exporta la función serverless de Vercel
+export default async function handler(req, res) {
+  // 1. Configuración de seguridad y método
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', ['POST']);
+    return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 
-  // 2. Obtener el 'prompt' que envió el frontend
-  const { prompt } = request.body;
-  if (!prompt) {
-    return response.status(400).json({ error: 'Prompt is required' });
-  }
-
-  // 3. Obtener la API Key de forma segura desde las "Environment Variables" del servidor.
-  //    NUNCA la escribas directamente aquí.
+  // 2. Obtener la clave de API de las variables de entorno
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
-    return response.status(500).json({ error: 'API key not configured on server' });
+    return res.status(500).json({ error: "La variable de entorno GEMINI_API_KEY no está configurada." });
   }
 
-  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+  // 3. Obtener el prompt del cuerpo de la petición
+  const { prompt } = req.body;
+  if (!prompt) {
+    return res.status(400).json({ error: "No se proporcionó un 'prompt' en el cuerpo de la solicitud." });
+  }
 
   try {
-    // 4. Llamar a la API de Google desde el servidor
-    const geminiResponse = await fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
-      }),
+    // 4. Inicializar el modelo de IA de Google
+    const genAI = new GoogleGenerativeAI(apiKey);
+    // ACTUALIZACIÓN: Se especifica que la respuesta debe ser JSON
+    const model = genAI.getGenerativeModel({ 
+        model: "gemini-pro",
+        generationConfig: { responseMimeType: "application/json" }
     });
 
-    if (!geminiResponse.ok) {
-      const errorData = await geminiResponse.json();
-      console.error('Google API Error:', errorData);
-      return response.status(geminiResponse.status).json({ error: 'Failed to fetch data from Google API' });
-    }
-    
-    // 5. Enviar la respuesta de vuelta al frontend
-    const data = await geminiResponse.json();
-    response.status(200).json(data);
+    // 5. Generar contenido y obtener la respuesta
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const text = response.text();
+
+    // 6. Enviar la respuesta de vuelta al cliente
+    // La respuesta ya debería ser un JSON limpio, no necesita más limpieza.
+    res.status(200).json({ text: text });
 
   } catch (error) {
-    console.error('Internal Server Error:', error);
-    response.status(500).json({ error: 'Internal Server Error' });
+    // 7. Manejo de errores
+    console.error("Error al llamar a la API de Gemini:", error);
+    res.status(500).json({ error: `Error al comunicarse con la API de Gemini: ${error.message}` });
   }
 }
+
