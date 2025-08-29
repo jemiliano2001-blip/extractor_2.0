@@ -200,10 +200,6 @@
         const DEFAULT_SPREADSHEET_ID = '1sVxihsoi-SglpeXxp5DJZXAAp3Azz1rPcPJ-vvT8UdQ';
         const DEFAULT_SHEET_NAME = 'Hoja1';
         
-        // --- ¡API KEY REMOVED! ---
-        // La clave de API ha sido eliminada de aquí para protegerla.
-        // Ahora se utiliza un intermediario (función serverless) para hacer las llamadas.
-
         // --- Global Variables ---
         let SPREADSHEET_ID = DEFAULT_SPREADSHEET_ID;
         let SHEET_NAME = DEFAULT_SHEET_NAME;
@@ -233,7 +229,6 @@
             resultsContainer.classList.add('opacity-0');
             
             currentOrderData = [];
-            // updateButtonStates(); 
 
             const allOrderTexts = orderText.split('====').filter(text => text.trim() !== '');
 
@@ -270,45 +265,45 @@
             } finally {
                 loader.classList.add('hidden');
                 loaderText.textContent = 'Consultando a la IA...';
-                // updateButtonStates();
             }
         }
         
         async function callGeminiAPI(prompt) {
-            // La URL ahora apunta a TU función serverless, no a Google.
-            const url = '/api/gemini'; // La ruta a tu intermediario
+            // This URL points to your serverless function.
+            // Vercel will automatically route requests from /api/* to the corresponding file in the /api directory.
+            const url = '/api/gemini';
             
             try {
                 const response = await fetch(url, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    // Ahora solo envías el prompt, la clave la pondrá el servidor.
+                    // You only send the prompt; the server adds the API key.
                     body: JSON.stringify({ prompt: prompt }) 
                 });
 
                 if (!response.ok) {
                     const errorData = await response.json();
                     console.error("Error response from our API proxy:", errorData);
-                    throw new Error(`Error del servidor intermediario: ${response.status}`);
+                    throw new Error(`Proxy server error: ${response.status}`);
                 }
 
                 const data = await response.json();
                 if (!data.candidates || !data.candidates[0].content || !data.candidates[0].content.parts[0].text) {
-                    throw new Error("Respuesta inesperada de la API a través del servidor.");
+                    throw new Error("Unexpected API response via server.");
                 }
                 return data.candidates[0].content.parts[0].text;
 
             } catch (error) {
-                console.error("No se pudo llamar a la API a través del servidor", error);
-                throw error; // Vuelve a lanzar el error para que sea manejado por processOrder
+                console.error("Could not call API via server", error);
+                throw error; // Re-throw the error to be handled by processOrder
             }
         }
 
         function parseAndValidateData(rawText) {
             const parts = rawText.split('~~');
-            if (parts.length < 1) throw new Error("La respuesta de la IA no tiene el formato esperado (faltan artículos).");
+            if (parts.length < 1) throw new Error("AI response lacks the expected format (missing items).");
             const mainInfo = parts[0].split('@@');
-            if (mainInfo.length < 6) throw new Error("Faltan campos principales en la respuesta de la IA.");
+            if (mainInfo.length < 6) throw new Error("Missing main fields in AI response.");
             const items = [];
             // Start from index 1 as index 0 is the main info
             for (let i = 1; i < parts.length; i++) {
@@ -383,41 +378,144 @@
         
         function showToast(message, type = 'info') {
             const toast = document.getElementById('toast');
-            toast.innerHTML = message;
+            toast.textContent = message;
 
             if (toastTimeout) clearTimeout(toastTimeout);
             
-            // Se remueven las clases de color anteriores para evitar conflictos
             toast.classList.remove('bg-green-500', 'bg-red-500', 'bg-blue-500');
 
-            // Se añaden las clases de color y visibilidad nuevas
             const typeClasses = { success: 'bg-green-500', error: 'bg-red-500', info: 'bg-blue-500' };
             toast.classList.add(typeClasses[type] || typeClasses['info'], 'opacity-100', 'visible');
             
             const duration = 3000; 
 
             toastTimeout = setTimeout(() => {
-                // Al terminar, solo se quitan las clases de visibilidad, volviendo al estado oculto
                 toast.classList.remove('opacity-100', 'visible');
             }, duration);
         }
         
-        // --- Google Sheets Logic (assuming it exists and works) ---
-        function gapiLoaded() { gapi.load('client', initializeGapiClient); }
+        // --- Google Sheets & Auth Logic ---
+        function gapiLoaded() {
+            gapi.load('client', initializeGapiClient);
+        }
+
         async function initializeGapiClient() {
-            await gapi.client.init({ discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"] });
+            await gapi.client.init({
+                discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+            });
             gapiInited = true;
             maybeEnableButtons();
         }
+
         function gisLoaded() {
-            tokenClient = google.accounts.oauth2.initTokenClient({ client_id: DEFAULT_CLIENT_ID, scope: 'https://www.googleapis.com/auth/spreadsheets', callback: '', });
+            tokenClient = google.accounts.oauth2.initTokenClient({
+                client_id: DEFAULT_CLIENT_ID,
+                scope: 'https://www.googleapis.com/auth/spreadsheets',
+                callback: (tokenResponse) => {
+                    if (tokenResponse && tokenResponse.access_token) {
+                        gapi.client.setToken({ access_token: tokenResponse.access_token });
+                        updateUiForSignIn(true);
+                        showToast('Sesión iniciada correctamente.', 'success');
+                    } else {
+                        console.error("Error en la autenticación:", tokenResponse);
+                        showToast("No se pudo iniciar sesión.", "error");
+                    }
+                },
+            });
             gisInited = true;
             maybeEnableButtons();
         }
-        function maybeEnableButtons() { /* Placeholder */ }
-        function handleAuthClick() { /* Placeholder */ }
-        function handleSignoutClick() { /* Placeholder */ }
-        async function appendDataToSheet() { /* Placeholder */ }
+
+        function maybeEnableButtons() {
+            // This function now just checks if both scripts are loaded.
+            // UI state is handled by the default HTML and updateUiForSignIn.
+        }
+
+        function handleAuthClick() {
+            if (!gapi.client.getToken()) {
+                tokenClient.requestAccessToken({prompt: ''}); // Use '' for a smoother experience
+            }
+        }
+
+        function handleSignoutClick() {
+            const token = gapi.client.getToken();
+            if (token !== null) {
+                google.accounts.oauth2.revoke(token.access_token, () => {
+                    gapi.client.setToken(null);
+                    updateUiForSignIn(false);
+                    showToast('Sesión cerrada correctamente.', 'success');
+                });
+            }
+        }
+
+        function updateUiForSignIn(isSignedIn) {
+            const authorizeButton = document.getElementById('authorize_button');
+            const signoutButton = document.getElementById('signout_button');
+            const sendToSheetsButton = document.getElementById('send_to_sheets_button');
+
+            if (isSignedIn) {
+                authorizeButton.classList.add('hidden');
+                signoutButton.classList.remove('hidden');
+                sendToSheetsButton.disabled = false;
+                sendToSheetsButton.classList.remove('cursor-not-allowed', 'disabled:opacity-40');
+            } else {
+                authorizeButton.classList.remove('hidden');
+                signoutButton.classList.add('hidden');
+                sendToSheetsButton.disabled = true;
+                sendToSheetsButton.classList.add('cursor-not-allowed', 'disabled:opacity-40');
+            }
+        }
+
+        async function appendDataToSheet() {
+            if (!gapi.client.getToken()) {
+                showToast('Debes iniciar sesión para enviar datos.', 'error');
+                return;
+            }
+
+            const sendButton = document.getElementById('send_to_sheets_button');
+            sendButton.disabled = true;
+            sendButton.textContent = 'Enviando...';
+
+            try {
+                const rows = Array.from(document.getElementById('resultsTableBody').rows);
+                if (rows.length === 0) {
+                    showToast('No hay datos para enviar.', 'error');
+                    return;
+                }
+
+                const values = rows.map(row => {
+                    const cells = Array.from(row.cells).slice(1); // Skip checkbox cell
+                    return cells.map(cell => cell.textContent);
+                });
+
+                const body = { values: values };
+
+                const response = await gapi.client.sheets.spreadsheets.values.append({
+                    spreadsheetId: SPREADSHEET_ID,
+                    range: SHEET_NAME,
+                    valueInputOption: 'USER_ENTERED',
+                    resource: body,
+                });
+
+                const result = response.result;
+                if (result.updates && result.updates.updatedCells > 0) {
+                    showToast(`${result.updates.updatedCells} celdas añadidas correctamente.`, 'success');
+                } else {
+                    showToast('No se pudo añadir la información a la hoja.', 'error');
+                }
+
+            } catch (err) {
+                console.error("API Error: ", err);
+                let errorMessage = 'Error al enviar datos. Revisa la consola para más detalles.';
+                if (err.result && err.result.error) {
+                    errorMessage = `Error de Google Sheets: ${err.result.error.message}`;
+                }
+                showToast(errorMessage, 'error');
+            } finally {
+                sendButton.disabled = false;
+                sendButton.textContent = 'Enviar a Google Sheets';
+            }
+        }
         
         // --- Settings Modal Logic ---
         function showSettingsModal() {
@@ -527,7 +625,6 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             loadSettings();
-            document.getElementById('authorize_button').style.display = 'flex';
             initializeEasterEggs();
 
             const savedThemes = JSON.parse(localStorage.getItem('discoveredThemes')) || [];
