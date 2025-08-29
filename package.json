@@ -1,11 +1,15 @@
 {
-  "name": "vercel-gemini-extractor",
+  "name": "extractor-ordenes-vercel",
   "version": "1.0.0",
-  "description": "A web app with a Vercel serverless function to call the Gemini API.",
-  "main": "index.html",
+  "description": "Función para procesar órdenes con la API de Gemini en Vercel.",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@google/generative-ai": "^0.11.3"
+  }
 }
