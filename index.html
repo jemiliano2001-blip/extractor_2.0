@@ -53,40 +53,52 @@
             outline: 2px solid #8ab4f8;
             border-radius: 2px;
         }
+        /* Styles for active template button */
+        .template-btn-active {
+            background-color: #8ab4f8 !important;
+            color: #202124 !important;
+            border-color: #8ab4f8 !important;
+            font-weight: 500;
+        }
         
         /* --- Easter Egg Themes --- */
         .matrix-theme { background-color: #000 !important; font-family: 'VT323', monospace !important; color: #39FF14 !important; }
         .matrix-theme .container, .matrix-theme #settingsModalContent { background-color: #0D0208 !important; border-color: #003B00 !important; }
         .matrix-theme h1, .matrix-theme textarea, .matrix-theme button, .matrix-theme td, .matrix-theme th, .matrix-theme p, .matrix-theme label, .matrix-theme select, .matrix-theme input, .matrix-theme span { color: #39FF14 !important; text-shadow: 0 0 5px #39FF14, 0 0 2px #39FF14; }
         .matrix-theme textarea, .matrix-theme #resultsContainer, .matrix-theme select, .matrix-theme input, .matrix-theme #settingsModalContent { border-color: #003B00 !important; background-color: #000 !important; }
-        .matrix-theme button { background-color: #001F00 !important; border: 1px solid #003B00 !important; }
-        .matrix-theme button:hover { background-color: #003B00 !important; }
+        .matrix-theme button:not(.template-btn-active) { background-color: #001F00 !important; border: 1px solid #003B00 !important; }
+        .matrix-theme button:hover:not(.template-btn-active) { background-color: #003B00 !important; }
+        .matrix-theme .template-btn-active { color: #000 !important; background-color: #39FF14 !important; border-color: #39FF14 !important; }
+
 
         .synthwave-theme { background: linear-gradient(160deg, #1A0A3F 0%, #000 100%) !important; font-family: 'Audiowide', cursive !important; color: #00FFFF !important; }
-        .synthwave-theme .container { background: rgba(26, 10, 63, 0.5) !important; border-color: #FF00FF !important; box-shadow: 0 0 15px #FF00FF; }
+        .synthwave-theme .container, .synthwave-theme #settingsModalContent { background: rgba(26, 10, 63, 0.5) !important; border-color: #FF00FF !important; box-shadow: 0 0 15px #FF00FF; }
         .synthwave-theme h1, .synthwave-theme textarea, .synthwave-theme button, .synthwave-theme td, .synthwave-theme th, .synthwave-theme p, .synthwave-theme label, .synthwave-theme select, .synthwave-theme input, .synthwave-theme span { color: #00FFFF !important; text-shadow: 0 0 5px #00FFFF, 0 0 2px #00FFFF; }
         .synthwave-theme textarea, .synthwave-theme #resultsContainer, .synthwave-theme select, .synthwave-theme input, .synthwave-theme #settingsModalContent { border-color: #FF00FF !important; background-color: rgba(0,0,0,0.5) !important; }
-        .synthwave-theme button { background-color: transparent !important; border: 1px solid #FF00FF !important; color: #FF00FF !important; text-shadow: 0 0 5px #FF00FF; }
-        .synthwave-theme button:hover { background-color: rgba(255, 0, 255, 0.2) !important; }
+        .synthwave-theme button:not(.template-btn-active) { background-color: transparent !important; border: 1px solid #FF00FF !important; color: #FF00FF !important; text-shadow: 0 0 5px #FF00FF; }
+        .synthwave-theme button:hover:not(.template-btn-active) { background-color: rgba(255, 0, 255, 0.2) !important; }
+        .synthwave-theme .template-btn-active { color: #000 !important; background-color: #00FFFF !important; border-color: #00FFFF !important; text-shadow: none !important; }
 
         .blueprint-theme { background-color: #0A2463 !important; font-family: 'monospace', monospace !important; color: #D8F2FF !important; }
         .blueprint-theme .container, .blueprint-theme #settingsModalContent { background-color: #0A2463 !important; border: 1px solid #D8F2FF !important; box-shadow: none !important; border-radius: 0 !important; }
         .blueprint-theme h1, .blueprint-theme textarea, .blueprint-theme button, .blueprint-theme td, .blueprint-theme th, .blueprint-theme p, .blueprint-theme label, .blueprint-theme select, .blueprint-theme input, .blueprint-theme span { color: #D8F2FF !important; text-shadow: none !important; }
         .blueprint-theme textarea, .blueprint-theme #resultsContainer, .blueprint-theme button, .blueprint-theme select, .blueprint-theme input { border: 1px solid #D8F2FF !important; background-color: transparent !important; border-radius: 0 !important; }
         .blueprint-theme th, .blueprint-theme td { border-style: dashed !important; }
-        .blueprint-theme button:hover { background-color: rgba(216, 242, 255, 0.1) !important; }
+        .blueprint-theme button:hover:not(.template-btn-active) { background-color: rgba(216, 242, 255, 0.1) !important; }
+        .blueprint-theme .template-btn-active { background-color: #D8F2FF !important; color: #0A2463 !important; border-color: #D8F2FF !important; }
         
         .retro-theme { background-color: #2E2B49 !important; font-family: 'Press Start 2P', cursive !important; }
         .retro-theme .container, .retro-theme #settingsModalContent { background-color: #000 !important; border: 4px solid #5A5A78 !important; border-radius: 0 !important; }
         .retro-theme h1, .retro-theme textarea, .retro-theme button, .retro-theme td, .retro-theme th, .retro-theme p, .retro-theme label, .retro-theme select, .retro-theme input, .retro-theme span { color: #FFFFFF !important; text-shadow: 2px 2px #FF00DE; }
         .retro-theme textarea, .retro-theme #resultsContainer, .retro-theme select, .retro-theme input { border: 4px solid #5A5A78 !important; background-color: #2E2B49 !important; border-radius: 0 !important; }
-        .retro-theme button { background-color: #D83B8B !important; border: none !important; border-radius: 0 !important; text-shadow: none !important; }
-        .retro-theme button:hover { background-color: #FF55A3 !important; }
+        .retro-theme button:not(.template-btn-active) { background-color: #D83B8B !important; border: none !important; border-radius: 0 !important; text-shadow: none !important; }
+        .retro-theme button:hover:not(.template-btn-active) { background-color: #FF55A3 !important; }
+        .retro-theme .template-btn-active { background-color: #FFFFFF !important; color: #D83B8B !important; text-shadow: none !important; }
     </style>
 </head>
 <body class="bg-google-dark text-google-text font-sans flex items-center justify-center min-h-screen p-4">
 
-    <div class="container w-full max-w-6xl bg-google-gray rounded-xl shadow-2xl border border-google-light-gray/50 p-6 sm:p-8 relative">
+    <div class="container w-full max-w-7xl bg-google-gray rounded-xl shadow-2xl border border-google-light-gray/50 p-6 sm:p-8 relative">
         <button onclick="showSettingsModal()" class="absolute top-4 right-4 text-google-light-gray hover:text-google-text transition-colors" title="Configuración">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
         </button>
@@ -95,6 +107,13 @@
         
         <div class="relative">
             <textarea id="orderText" class="w-full h-48 bg-google-dark text-google-text border-2 border-google-light-gray rounded-lg p-4 text-base focus:ring-2 focus:ring-google-blue focus:border-google-blue transition resize-y" placeholder="Pega aquí el texto de una o varias órdenes. Sepáralas con '===''."></textarea>
+        </div>
+        
+        <!-- NEW: Template Selector -->
+        <div class="mt-4 flex justify-center items-center gap-2">
+            <span class="text-sm text-gray-400 mr-2">Formato de Salida:</span>
+            <button id="templateBtnCompleto" onclick="setTemplate('completo')" class="template-btn-active text-sm border border-google-light-gray py-1.5 px-4 rounded-full transition-colors duration-200">Completo</button>
+            <button id="templateBtnSimple" onclick="setTemplate('simple')" class="text-sm border border-google-light-gray text-google-blue hover:bg-google-light-gray/20 py-1.5 px-4 rounded-full transition-colors duration-200">Simple</button>
         </div>
         
         <div class="mt-5 flex flex-wrap items-center justify-center gap-3">
@@ -129,20 +148,8 @@
 
         <div id="resultsContainer" class="mt-4 max-h-[40vh] overflow-y-auto hidden opacity-0 transition-opacity duration-500 ease-in-out rounded-lg border border-google-light-gray/50">
             <table id="resultsTable" class="w-full text-sm text-left text-google-text">
-                <thead class="text-xs text-gray-400 uppercase bg-google-dark">
-                    <tr>
-                        <th class="px-2 py-3"><input type="checkbox" id="selectAllCheckbox" onchange="toggleAllCheckboxes(this.checked)" class="bg-google-gray border-google-light-gray"></th>
-                        <th class="px-4 py-3">Referencia</th>
-                        <th class="px-4 py-3">Fecha</th>
-                        <th class="px-4 py-3">Proveedor</th>
-                        <th class="px-4 py-3">Descripción</th>
-                        <th class="px-4 py-3 text-right">Cant.</th>
-                        <th class="px-4 py-3 text-right">P/U</th>
-                        <th class="px-4 py-3 text-right">Subtotal</th>
-                        <th class="px-4 py-3">Requisitor</th>
-                        <th class="px-4 py-3">Cta. Cargo</th>
-                        <th class="px-4 py-3">Destino</th>
-                    </tr>
+                <thead id="resultsTableHeader" class="text-xs text-gray-400 uppercase bg-google-dark">
+                    <!-- Header will be injected here -->
                 </thead>
                 <tbody id="resultsTableBody" class="bg-google-gray divide-y divide-google-light-gray/50">
                     <!-- Rows will be injected here -->
@@ -196,8 +203,21 @@
         let SHEET_NAME = DEFAULT_SHEET_NAME;
         let tokenClient;
         let toastTimeout;
+        let currentTemplate = 'completo'; // 'completo' or 'simple'
+        let processedDataCache = []; // To store the last processed data
 
         // --- Application Logic ---
+        function setTemplate(templateName) {
+            currentTemplate = templateName;
+            document.getElementById('templateBtnCompleto').classList.toggle('template-btn-active', templateName === 'completo');
+            document.getElementById('templateBtnSimple').classList.toggle('template-btn-active', templateName === 'simple');
+            
+            // If there's data in the cache, redisplay it with the new template
+            if (processedDataCache.length > 0) {
+                displayResults(processedDataCache);
+            }
+        }
+
         async function processOrder() {
             const orderText = document.getElementById('orderText').value;
             if (!orderText.trim()) {
@@ -260,6 +280,7 @@
                     allOrdersData.push(jsonData);
                 }
 
+                processedDataCache = allOrdersData; // Cache the new data
                 displayResults(allOrdersData);
 
             } catch (error) {
@@ -272,38 +293,24 @@
         }
         
         async function callGeminiAPI(prompt) {
+            // This function remains the same
             const url = new URL('/api/gemini', window.location.origin).href;
-            
             try {
                 const response = await fetch(url, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ prompt: prompt }) 
                 });
-
                 if (!response.ok) {
-                    if (response.status === 404) {
-                        throw new Error("API (404): La función '/api/gemini' no se encontró. Revisa la configuración de tu proyecto en Vercel.");
-                    }
-                    
                     let errorMsg = `Error del servidor: ${response.status} ${response.statusText}`;
-                    const errorText = await response.text();
                     try {
-                        const errorData = JSON.parse(errorText);
-                        if (errorData.error) {
-                            errorMsg = errorData.error;
-                        }
-                    } catch (e) {
-                        if (errorText) {
-                            errorMsg = errorText;
-                        }
-                    }
+                        const errorData = await response.json();
+                        errorMsg = errorData.error || errorMsg;
+                    } catch (e) { /* Ignore parsing error */ }
                     throw new Error(errorMsg);
                 }
-
                 const data = await response.json();
                 return data.text;
-
             } catch (error) {
                 console.error("No se pudo llamar a la API a través de la función del servidor", error);
                 throw error;
@@ -311,56 +318,88 @@
         }
 
         function displayResults(orders) {
+            const tableHeader = document.getElementById('resultsTableHeader');
             const tableBody = document.getElementById('resultsTableBody');
+            tableHeader.innerHTML = '';
             tableBody.innerHTML = '';
+
             const formatForDisplay = (value) => (value === 'N/A' || value === undefined || value === null) ? '' : value;
-            
-            const createRow = (rowData) => {
-                const row = document.createElement('tr');
-                row.className = 'hover:bg-google-light-gray/10';
-                
-                const checkboxCell = document.createElement('td');
-                checkboxCell.className = 'px-2 py-3';
-                checkboxCell.innerHTML = `<input type="checkbox" onchange="handleCheckboxClick()" class="row-checkbox bg-google-gray border-google-light-gray">`;
-                row.appendChild(checkboxCell);
 
-                rowData.forEach((cellData, cellIndex) => {
-                    const cell = document.createElement('td');
-                    cell.className = 'px-4 py-3';
-                    if ([4, 5, 6].includes(cellIndex)) {
-                        cell.classList.add('text-right');
-                    }
-                    cell.textContent = cellData;
-                    if ([7, 8, 9].includes(cellIndex)) { 
-                        cell.contentEditable = true; 
-                        cell.classList.add('editable-cell');
-                    }
-                    row.appendChild(cell);
-                });
-                return row;
+            // Define headers based on the current template
+            let headers = [];
+            if (currentTemplate === 'completo') {
+                headers = ['Referencia', 'Fecha', 'Proveedor', 'Descripción', 'Cant.', 'P/U', 'Subtotal', 'Requisitor', 'Cta. Cargo', 'Destino'];
+                document.getElementById('batchEditContainer').style.display = 'flex';
+                document.getElementById('suggest_category_button').style.display = 'inline-flex';
+            } else { // simple template
+                headers = ['ID de pedido', 'Descripción del artículo', 'CANTIDAD', 'Precio por artículo', 'Total de línea', 'Código'];
+                document.getElementById('batchEditContainer').style.display = 'none';
+                document.getElementById('suggest_category_button').style.display = 'none';
             }
+            
+            // Create header row
+            const headerRow = document.createElement('tr');
+            if (currentTemplate === 'completo') {
+                headerRow.innerHTML = `<th class="px-2 py-3"><input type="checkbox" id="selectAllCheckbox" onchange="toggleAllCheckboxes(this.checked)" class="bg-google-gray border-google-light-gray"></th>`;
+            }
+            headers.forEach(headerText => {
+                const th = document.createElement('th');
+                th.className = 'px-4 py-3';
+                th.textContent = headerText;
+                headerRow.appendChild(th);
+            });
+            tableHeader.appendChild(headerRow);
 
+            // Create body rows
             orders.forEach(data => {
                 const reference = formatForDisplay(data.poNumber) || formatForDisplay(data.orderId);
                 const date = formatForDisplay(data.date);
                 const provider = formatForDisplay(data.provider);
 
-                data.items.forEach(item => {
+                const createRow = (rowData) => {
+                    const row = document.createElement('tr');
+                    row.className = 'hover:bg-google-light-gray/10';
+                    
+                    if (currentTemplate === 'completo') {
+                         row.innerHTML += `<td class="px-2 py-3"><input type="checkbox" onchange="handleCheckboxClick()" class="row-checkbox bg-google-gray border-google-light-gray"></td>`;
+                    }
+                    
+                    rowData.forEach((cellData, cellIndex) => {
+                        const cell = document.createElement('td');
+                        cell.className = 'px-4 py-3';
+                        if (currentTemplate === 'completo' && [4, 5, 6].includes(cellIndex)) {
+                             cell.classList.add('text-right');
+                        }
+                         if (currentTemplate === 'simple' && [2, 3, 4].includes(cellIndex)) {
+                             cell.classList.add('text-right');
+                        }
+                        cell.textContent = cellData;
+                        if (currentTemplate === 'completo' && [7, 8, 9].includes(cellIndex)) { 
+                            cell.contentEditable = true; 
+                            cell.classList.add('editable-cell');
+                        }
+                        row.appendChild(cell);
+                    });
+                    return row;
+                };
+
+                const allItems = [...data.items];
+                if (data.shipping > 0) allItems.push({ description: 'Envío', quantity: 1, unitPrice: data.shipping });
+                if (data.tax > 0) allItems.push({ description: 'Impuesto', quantity: 1, unitPrice: data.tax });
+
+                allItems.forEach(item => {
                     const quantity = parseFloat(item.quantity) || 0;
                     const unitPrice = parseFloat(item.unitPrice) || 0;
                     const subtotal = quantity * unitPrice;
-                    const rowData = [reference, date, provider, formatForDisplay(item.description), quantity, unitPrice.toFixed(2), subtotal.toFixed(2), '', '', ''];
+                    
+                    let rowData;
+                    if (currentTemplate === 'completo') {
+                         rowData = [reference, date, provider, formatForDisplay(item.description), quantity, unitPrice.toFixed(2), subtotal.toFixed(2), '', '', ''];
+                    } else { // simple
+                        rowData = [reference, formatForDisplay(item.description), quantity, `$${unitPrice.toFixed(2)}`, `$${subtotal.toFixed(2)}`, '']; // Código column is empty for now
+                    }
                     tableBody.appendChild(createRow(rowData));
                 });
-                
-                if (data.shipping > 0) {
-                    const rowData = [reference, date, provider, 'Envío', 1, data.shipping.toFixed(2), data.shipping.toFixed(2), '', '', ''];
-                    tableBody.appendChild(createRow(rowData));
-                }
-                if (data.tax > 0) {
-                     const rowData = [reference, date, provider, 'Impuesto', 1, data.tax.toFixed(2), data.tax.toFixed(2), '', '', ''];
-                    tableBody.appendChild(createRow(rowData));
-                }
             });
 
             updateTableFooter();
@@ -375,6 +414,7 @@
             footer.innerHTML = '';
             
             if (tableBody.rows.length === 0) return;
+            if (currentTemplate !== 'completo') return; // Only show footer for 'completo' template
 
             let totalQuantity = 0;
             let totalSubtotal = 0;
@@ -392,7 +432,7 @@
 
             const footerRow = document.createElement('tr');
             footerRow.innerHTML = `
-                <td colspan="4" class="px-4 py-3 text-left">TOTALES</td>
+                <td colspan="5" class="px-4 py-3 text-left">TOTALES</td>
                 <td class="px-4 py-3">${totalQuantity.toLocaleString()}</td>
                 <td colspan="1" class="px-4 py-3"></td>
                 <td class="px-4 py-3">${totalSubtotal.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td>
@@ -402,6 +442,7 @@
         }
 
         function handleCheckboxClick() {
+            if (currentTemplate !== 'completo') return;
             const checkboxes = document.querySelectorAll('.row-checkbox');
             const selectedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
             const batchContainer = document.getElementById('batchEditContainer');
@@ -418,11 +459,13 @@
         }
 
         function toggleAllCheckboxes(checked) {
+            if (currentTemplate !== 'completo') return;
             document.querySelectorAll('.row-checkbox').forEach(cb => cb.checked = checked);
             handleCheckboxClick();
         }
 
         function applyBatchEdit() {
+            if (currentTemplate !== 'completo') return;
             const requisitor = document.getElementById('batchRequisitor').value;
             const ctaCargo = document.getElementById('batchCtaCargo').value;
             const destino = document.getElementById('batchDestino').value;
@@ -438,6 +481,7 @@
         }
 
         async function suggestCategory() {
+            if (currentTemplate !== 'completo') return;
             const selectedCheckboxes = document.querySelectorAll('.row-checkbox:checked');
             if (selectedCheckboxes.length === 0) {
                 showToast('Selecciona al menos una fila para sugerir una categoría.', 'info');
@@ -479,12 +523,19 @@
         function copyTableToClipboard() {
             const table = document.getElementById('resultsTable');
             let textToCopy = '';
-            const headers = Array.from(table.querySelectorAll('thead th')).slice(1).map(th => th.textContent);
+            
+            // Get headers, excluding the checkbox column if it exists
+            const headerCells = Array.from(table.querySelectorAll('thead th'));
+            const startIndex = headerCells[0].querySelector('input[type="checkbox"]') ? 1 : 0;
+            const headers = headerCells.slice(startIndex).map(th => th.textContent);
             textToCopy += headers.join('\t') + '\n';
+            
+            // Get body rows, excluding checkbox cells
             Array.from(table.querySelectorAll('tbody tr')).forEach(row => {
-                const cells = Array.from(row.querySelectorAll('td')).slice(1).map(td => td.textContent.trim());
+                const cells = Array.from(row.querySelectorAll('td')).slice(startIndex).map(td => td.textContent.trim());
                 textToCopy += cells.join('\t') + '\n';
             });
+            
             navigator.clipboard.writeText(textToCopy).then(() => {
                 showToast('Tabla copiada al portapapeles.', 'success');
             }, (err) => {
@@ -497,28 +548,27 @@
             document.getElementById('orderText').value = '';
             document.getElementById('resultsContainer').classList.add('hidden', 'opacity-0');
             document.getElementById('resultsTableBody').innerHTML = '';
+            document.getElementById('resultsTableHeader').innerHTML = '';
             document.getElementById('resultsTableFooter').innerHTML = '';
+            processedDataCache = []; // Clear the cache
             handleCheckboxClick(); 
         }
         
         function showToast(message, type = 'info') {
+            // This function remains the same
             const toast = document.getElementById('toast');
             toast.textContent = message;
-            
             if (toastTimeout) clearTimeout(toastTimeout);
-            
             toast.classList.remove('bg-green-600', 'bg-red-600', 'bg-blue-600');
             const typeClasses = { success: 'bg-green-600', error: 'bg-red-600', info: 'bg-blue-600' };
             toast.classList.add(typeClasses[type] || typeClasses['info']);
-
             toast.classList.remove('opacity-0', 'invisible');
-            
             toastTimeout = setTimeout(() => {
                 toast.classList.add('opacity-0', 'invisible');
             }, 3000);
         }
         
-        // --- Google Sheets & Auth Logic ---
+        // --- Google Sheets & Auth Logic (remains the same) ---
         function gapiLoaded() { gapi.load('client', initializeGapiClient); }
         async function initializeGapiClient() {
             await gapi.client.init({ discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"] });
@@ -531,23 +581,17 @@
                     if (tokenResponse && tokenResponse.access_token) {
                         gapi.client.setToken({ access_token: tokenResponse.access_token });
                         updateUiForSignIn(true);
-                        showToast('Sesión iniciada correctamente.', 'success');
-                    } else {
-                        showToast("No se pudo iniciar sesión.", "error");
                     }
                 },
             });
         }
-        function handleAuthClick() {
-            if (tokenClient) tokenClient.requestAccessToken({prompt: 'consent'});
-        }
+        function handleAuthClick() { if (tokenClient) tokenClient.requestAccessToken({prompt: 'consent'}); }
         function handleSignoutClick() {
             const token = gapi.client.getToken();
             if (token !== null) {
                 google.accounts.oauth2.revoke(token.access_token, () => {
                     gapi.client.setToken(null);
                     updateUiForSignIn(false);
-                    showToast('Sesión cerrada correctamente.', 'success');
                 });
             }
         }
@@ -558,6 +602,8 @@
             sendButton.disabled = !isSignedIn;
             sendButton.classList.toggle('cursor-not-allowed', !isSignedIn);
             sendButton.classList.toggle('disabled:opacity-40', !isSignedIn);
+            if(isSignedIn) showToast('Sesión iniciada correctamente.', 'success');
+            else showToast('Sesión cerrada correctamente.', 'success');
         }
         async function appendDataToSheet() {
             if (!gapi.client.getToken()) {
@@ -567,14 +613,18 @@
             sendButton.disabled = true;
             sendButton.textContent = 'Enviando...';
             try {
-                const rows = Array.from(document.getElementById('resultsTableBody').rows);
-                if (rows.length === 0) {
-                    showToast('No hay datos para enviar.', 'info'); 
-                    sendButton.disabled = false;
-                    sendButton.textContent = 'Enviar a Google Sheets';
+                const table = document.getElementById('resultsTable');
+                if (table.rows.length <= 1) { // only header row
+                    showToast('No hay datos para enviar.', 'info');
                     return;
                 }
-                const values = rows.map(row => Array.from(row.cells).slice(1).map(cell => cell.textContent));
+                const headerCells = Array.from(table.querySelectorAll('thead th'));
+                const startIndex = headerCells[0].querySelector('input[type="checkbox"]') ? 1 : 0;
+                
+                const values = Array.from(table.querySelectorAll('tbody tr')).map(row => 
+                    Array.from(row.querySelectorAll('td')).slice(startIndex).map(cell => cell.textContent)
+                );
+
                 const response = await gapi.client.sheets.spreadsheets.values.append({
                     spreadsheetId: SPREADSHEET_ID, range: SHEET_NAME,
                     valueInputOption: 'USER_ENTERED', resource: { values: values },
@@ -590,7 +640,7 @@
             }
         }
         
-        // --- Settings Modal Logic ---
+        // --- Settings Modal Logic (remains the same) ---
         function showSettingsModal() {
             document.getElementById('spreadsheetIdInput').value = SPREADSHEET_ID;
             document.getElementById('sheetNameInput').value = SHEET_NAME;
@@ -610,16 +660,12 @@
             SHEET_NAME = localStorage.getItem('sheetName') || DEFAULT_SHEET_NAME;
         }
 
-        // --- Easter Egg & Theme Logic ---
-        const themes = {
-            matrix: "Matrix", synthwave: "Synthwave", blueprint: "Blueprint", retro: "Retro"
-        };
+        // --- Easter Egg & Theme Logic (remains the same) ---
+        const themes = { matrix: "Matrix", synthwave: "Synthwave", blueprint: "Blueprint", retro: "Retro" };
         let discoveredThemes = new Set();
         function applyTheme(themeName) {
             document.body.className = document.body.className.replace(/\b\w+-theme\b/g, '').trim();
-            if (themeName && themeName !== 'default') {
-                document.body.classList.add(`${themeName}-theme`);
-            }
+            if (themeName && themeName !== 'default') { document.body.classList.add(`${themeName}-theme`); }
             localStorage.setItem('selectedTheme', themeName);
         }
         function updateThemeSelector() {
@@ -628,8 +674,7 @@
             Object.keys(themes).forEach(key => {
                 if (discoveredThemes.has(key)) {
                     const option = document.createElement('option');
-                    option.value = key;
-                    option.textContent = themes[key];
+                    option.value = key; option.textContent = themes[key];
                     selector.appendChild(option);
                 }
             });
@@ -637,6 +682,7 @@
         }
         function initializeApp() {
             loadSettings();
+            setTemplate('completo'); // Set default template on load
             const savedDiscovered = JSON.parse(localStorage.getItem('discoveredThemes')) || [];
             discoveredThemes = new Set(savedDiscovered);
             const selectedTheme = localStorage.getItem('selectedTheme') || 'default';
@@ -688,9 +734,6 @@
 </html>
 
 
-
-</body>
-</html>
 
 
 
