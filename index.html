@@ -55,31 +55,27 @@
         }
         
         /* --- Easter Egg Themes --- */
-        /* Matrix Theme */
-        .matrix-theme { background-color: #000 !important; font-family: 'VT323', monospace !important; }
-        .matrix-theme .container { background-color: #0D0208 !important; border-color: #003B00 !important; }
+        .matrix-theme { background-color: #000 !important; font-family: 'VT323', monospace !important; color: #39FF14 !important; }
+        .matrix-theme .container, .matrix-theme #settingsModalContent { background-color: #0D0208 !important; border-color: #003B00 !important; }
         .matrix-theme h1, .matrix-theme textarea, .matrix-theme button, .matrix-theme td, .matrix-theme th, .matrix-theme p, .matrix-theme label, .matrix-theme select, .matrix-theme input, .matrix-theme span { color: #39FF14 !important; text-shadow: 0 0 5px #39FF14, 0 0 2px #39FF14; }
         .matrix-theme textarea, .matrix-theme #resultsContainer, .matrix-theme select, .matrix-theme input, .matrix-theme #settingsModalContent { border-color: #003B00 !important; background-color: #000 !important; }
         .matrix-theme button { background-color: #001F00 !important; border: 1px solid #003B00 !important; }
         .matrix-theme button:hover { background-color: #003B00 !important; }
 
-        /* Synthwave Theme */
-        .synthwave-theme { background: linear-gradient(160deg, #1A0A3F 0%, #000 100%) !important; font-family: 'Audiowide', cursive !important; }
+        .synthwave-theme { background: linear-gradient(160deg, #1A0A3F 0%, #000 100%) !important; font-family: 'Audiowide', cursive !important; color: #00FFFF !important; }
         .synthwave-theme .container { background: rgba(26, 10, 63, 0.5) !important; border-color: #FF00FF !important; box-shadow: 0 0 15px #FF00FF; }
         .synthwave-theme h1, .synthwave-theme textarea, .synthwave-theme button, .synthwave-theme td, .synthwave-theme th, .synthwave-theme p, .synthwave-theme label, .synthwave-theme select, .synthwave-theme input, .synthwave-theme span { color: #00FFFF !important; text-shadow: 0 0 5px #00FFFF, 0 0 2px #00FFFF; }
         .synthwave-theme textarea, .synthwave-theme #resultsContainer, .synthwave-theme select, .synthwave-theme input, .synthwave-theme #settingsModalContent { border-color: #FF00FF !important; background-color: rgba(0,0,0,0.5) !important; }
         .synthwave-theme button { background-color: transparent !important; border: 1px solid #FF00FF !important; color: #FF00FF !important; text-shadow: 0 0 5px #FF00FF; }
         .synthwave-theme button:hover { background-color: rgba(255, 0, 255, 0.2) !important; }
 
-        /* Blueprint Theme */
-        .blueprint-theme { background-color: #0A2463 !important; font-family: 'monospace', monospace !important; }
+        .blueprint-theme { background-color: #0A2463 !important; font-family: 'monospace', monospace !important; color: #D8F2FF !important; }
         .blueprint-theme .container, .blueprint-theme #settingsModalContent { background-color: #0A2463 !important; border: 1px solid #D8F2FF !important; box-shadow: none !important; border-radius: 0 !important; }
         .blueprint-theme h1, .blueprint-theme textarea, .blueprint-theme button, .blueprint-theme td, .blueprint-theme th, .blueprint-theme p, .blueprint-theme label, .blueprint-theme select, .blueprint-theme input, .blueprint-theme span { color: #D8F2FF !important; text-shadow: none !important; }
         .blueprint-theme textarea, .blueprint-theme #resultsContainer, .blueprint-theme button, .blueprint-theme select, .blueprint-theme input { border: 1px solid #D8F2FF !important; background-color: transparent !important; border-radius: 0 !important; }
         .blueprint-theme th, .blueprint-theme td { border-style: dashed !important; }
         .blueprint-theme button:hover { background-color: rgba(216, 242, 255, 0.1) !important; }
         
-        /* Retro Theme */
         .retro-theme { background-color: #2E2B49 !important; font-family: 'Press Start 2P', cursive !important; }
         .retro-theme .container, .retro-theme #settingsModalContent { background-color: #000 !important; border: 4px solid #5A5A78 !important; border-radius: 0 !important; }
         .retro-theme h1, .retro-theme textarea, .retro-theme button, .retro-theme td, .retro-theme th, .retro-theme p, .retro-theme label, .retro-theme select, .retro-theme input, .retro-theme span { color: #FFFFFF !important; text-shadow: 2px 2px #FF00DE; }
@@ -91,7 +87,7 @@
 <body class="bg-google-dark text-google-text font-sans flex items-center justify-center min-h-screen p-4">
 
     <div class="container w-full max-w-6xl bg-google-gray rounded-xl shadow-2xl border border-google-light-gray/50 p-6 sm:p-8 relative">
-        <button onclick="showSettingsModal()" class="absolute top-4 right-4 text-google-light-gray hover:text-google-text transition-colors">
+        <button onclick="showSettingsModal()" class="absolute top-4 right-4 text-google-light-gray hover:text-google-text transition-colors" title="Configuración">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
         </button>
 
@@ -106,26 +102,15 @@
             <button id="clearButton" onclick="resetInterface()" class="bg-google-light-gray/50 hover:bg-google-light-gray/80 text-google-text font-medium py-2.5 px-6 rounded-full transition-colors duration-200">Limpiar</button>
         </div>
         
-        <!-- Theme Selector - Hidden by default -->
-        <div id="themeSelectorContainer" class="mt-4 hidden text-center transition-opacity duration-500 opacity-0">
-            <label for="themeSelector" class="mr-2 text-sm text-gray-400">Tema Visual:</label>
-            <select id="themeSelector" class="bg-google-dark border border-google-light-gray rounded-md p-1 text-sm focus:ring-google-blue focus:border-google-blue">
-                <option value="default">Default</option>
-                <option value="matrix">Matrix</option>
-                <option value="synthwave">Synthwave</option>
-                <option value="blueprint">Blueprint</option>
-            </select>
-        </div>
-        
-        <div class="mt-6 border-t border-google-light-gray/50 pt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="mt-6 border-t border-google-light-gray/50 pt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
              <button id="authorize_button" onclick="handleAuthClick()" class="border border-google-light-gray text-google-blue hover:bg-google-light-gray/20 font-medium py-2.5 px-4 rounded-full transition-colors duration-200 flex items-center justify-center gap-2">
                 <svg class="w-5 h-5" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path><path fill="none" d="M0 0h48v48H0z"></path></svg>
-                Iniciar Sesión con Google
+                Iniciar Sesión
             </button>
-            <button id="send_to_sheets_button" onclick="appendDataToSheet()" disabled class="bg-google-light-gray text-google-text font-medium py-2.5 px-4 rounded-full cursor-not-allowed disabled:opacity-40">Enviar a Google Sheets</button>
-             <button id="copy_button" onclick="copyTableToClipboard()" class="border border-google-light-gray text-google-blue hover:bg-google-light-gray/20 font-medium py-2.5 px-4 rounded-full transition-colors duration-200">Copiar Tabla</button>
-            <button id="suggest_category_button" onclick="suggestCategory()" class="hidden border border-google-light-gray text-google-blue hover:bg-google-light-gray/20 font-medium py-2.5 px-4 rounded-full transition-colors duration-200">Sugerir Cuenta Cargo</button>
-            <button id="signout_button" onclick="handleSignoutClick()" class="hidden bg-red-600/80 hover:bg-red-600 text-white font-medium py-2.5 px-4 rounded-full transition-colors duration-200 sm:col-span-2">Cerrar Sesión</button>
+            <button id="send_to_sheets_button" onclick="appendDataToSheet()" disabled class="bg-google-light-gray text-google-text font-medium py-2.5 px-4 rounded-full cursor-not-allowed disabled:opacity-40">Enviar a Sheets</button>
+            <button id="copy_button" onclick="copyTableToClipboard()" class="border border-google-light-gray text-google-blue hover:bg-google-light-gray/20 font-medium py-2.5 px-4 rounded-full transition-colors duration-200">Copiar Tabla</button>
+            <button id="suggest_category_button" onclick="suggestCategory()" class="border border-google-light-gray text-google-blue hover:bg-google-light-gray/20 font-medium py-2.5 px-4 rounded-full transition-colors duration-200">Sugerir Cuentas</button>
+            <button id="signout_button" onclick="handleSignoutClick()" class="hidden bg-red-600/80 hover:bg-red-600 text-white font-medium py-2.5 px-4 rounded-full transition-colors duration-200 md:col-span-4">Cerrar Sesión</button>
         </div>
         
         <div class="text-center py-6 hidden" id="loader">
@@ -142,7 +127,7 @@
             <button onclick="applyBatchEdit()" class="bg-google-blue text-google-dark font-bold py-2 px-4 rounded-full text-sm hover:bg-google-blue-hover">Aplicar a Selección</button>
         </div>
 
-        <div id="resultsContainer" class="mt-4 max-h-80 overflow-y-auto hidden opacity-0 transition-opacity duration-500 ease-in-out rounded-lg border border-google-light-gray/50">
+        <div id="resultsContainer" class="mt-4 max-h-[40vh] overflow-y-auto hidden opacity-0 transition-opacity duration-500 ease-in-out rounded-lg border border-google-light-gray/50">
             <table id="resultsTable" class="w-full text-sm text-left text-google-text">
                 <thead class="text-xs text-gray-400 uppercase bg-google-dark">
                     <tr>
@@ -151,9 +136,9 @@
                         <th class="px-4 py-3">Fecha</th>
                         <th class="px-4 py-3">Proveedor</th>
                         <th class="px-4 py-3">Descripción</th>
-                        <th class="px-4 py-3">Cant.</th>
-                        <th class="px-4 py-3">P/U</th>
-                        <th class="px-4 py-3">Subtotal</th>
+                        <th class="px-4 py-3 text-right">Cant.</th>
+                        <th class="px-4 py-3 text-right">P/U</th>
+                        <th class="px-4 py-3 text-right">Subtotal</th>
                         <th class="px-4 py-3">Requisitor</th>
                         <th class="px-4 py-3">Cta. Cargo</th>
                         <th class="px-4 py-3">Destino</th>
@@ -162,7 +147,7 @@
                 <tbody id="resultsTableBody" class="bg-google-gray divide-y divide-google-light-gray/50">
                     <!-- Rows will be injected here -->
                 </tbody>
-                <tfoot id="resultsTableFooter" class="bg-google-dark font-bold">
+                <tfoot id="resultsTableFooter" class="bg-google-dark font-bold text-right">
                     <!-- Footer row will be injected here -->
                 </tfoot>
             </table>
@@ -172,7 +157,7 @@
     <!-- Settings Modal -->
     <div id="settingsModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center hidden z-50">
         <div id="settingsModalContent" class="bg-google-gray p-8 rounded-lg shadow-xl w-full max-w-md border border-google-light-gray">
-            <h2 class="text-xl font-bold mb-4">Configuración</h2>
+            <h2 class="text-xl font-bold mb-6">Configuración</h2>
             <div class="space-y-4">
                 <div>
                     <label for="spreadsheetIdInput" class="block text-sm font-medium text-gray-300 mb-1">Spreadsheet ID</label>
@@ -181,6 +166,12 @@
                 <div>
                     <label for="sheetNameInput" class="block text-sm font-medium text-gray-300 mb-1">Sheet Name</label>
                     <input type="text" id="sheetNameInput" class="w-full bg-google-dark p-2 rounded-md focus:ring-1 focus:ring-google-blue focus:outline-none">
+                </div>
+                 <div>
+                    <label for="themeSelector" class="block text-sm font-medium text-gray-300 mb-1">Tema Visual</label>
+                     <select id="themeSelector" class="w-full bg-google-dark border border-google-light-gray rounded-md p-2 text-sm focus:ring-google-blue focus:border-google-blue">
+                        <option value="default">Default</option>
+                    </select>
                 </div>
             </div>
             <div class="mt-6 flex justify-end space-x-3">
@@ -196,23 +187,17 @@
     <!-- Main application script -->
     <script>
         // --- CONFIGURATION ---
-        const DEFAULT_CLIENT_ID = '28158273174-5vdfaaq8ahqo2913pm4hjto7n32trbi1.apps.googleusercontent.com';
-        const DEFAULT_SPREADSHEET_ID = '1sVxihsoi-SglpeXxp5DJZXAAp3Azz1rPcPJ-vvT8UdQ';
-        const DEFAULT_SHEET_NAME = 'Hoja1';
+        const DEFAULT_CLIENT_ID = '28158273174-5vdfaaq8ahqo2913pm4hjto7n32trbi1.apps.googleusercontent.com'; // Replace with your own Client ID
+        const DEFAULT_SPREADSHEET_ID = '1sVxihsoi-SglpeXxp5DJZXAAp3Azz1rPcPJ-vvT8UdQ'; // Example Sheet ID
+        const DEFAULT_SHEET_NAME = 'Hoja1'; // Example Sheet Name
         
         // --- Global Variables ---
         let SPREADSHEET_ID = DEFAULT_SPREADSHEET_ID;
         let SHEET_NAME = DEFAULT_SHEET_NAME;
-        let currentOrderData = [];
         let tokenClient;
-        let gapiInited = false;
-        let gisInited = false;
-        let discoveredThemes = new Set();
-        const TOTAL_THEMES = 3; // Matrix, Synthwave, Blueprint
         let toastTimeout;
 
         // --- Application Logic ---
-
         async function processOrder() {
             const orderText = document.getElementById('orderText').value;
             if (!orderText.trim()) {
@@ -225,42 +210,55 @@
             const resultsContainer = document.getElementById('resultsContainer');
             
             loader.classList.remove('hidden');
-            resultsContainer.classList.add('hidden');
-            resultsContainer.classList.add('opacity-0');
+            resultsContainer.classList.add('hidden', 'opacity-0');
             
-            currentOrderData = [];
-
-            const allOrderTexts = orderText.split('====').filter(text => text.trim() !== '');
+            const allOrderTexts = orderText.split('===').filter(text => text.trim() !== '');
 
             try {
-                const processedOrders = [];
+                const allOrdersData = [];
                 for (let i = 0; i < allOrderTexts.length; i++) {
                     const singleOrderText = allOrderTexts[i].trim();
                     loaderText.textContent = `Procesando orden ${i + 1} de ${allOrderTexts.length}...`;
                     
-                    const combinedPrompt = `
-                    Actúa como un analista de datos experto. Extrae la siguiente información del texto de la orden de compra.
-                    Formato de salida:
-                    [Proveedor]@@[ID de Orden]@@[Número de PO]@@[Fecha]@@[Costo de Envío]@@[Impuestos]~~[No. Parte]##[Descripción]##[Cantidad]##[Precio Unitario]##[Total de Línea]
-                    Reglas:
-                    - Separa los campos principales con '@@'.
-                    - Separa el bloque principal de los artículos con '~~'.
-                    - Separa los detalles de cada artículo con '##'.
-                    - Si un campo no se encuentra, usa 'N/A'.
-                    - La fecha SIEMPRE debe estar en formato YYYY-MM-DD. Convierte formatos como 'July 4, 2024' o '04/07/2024'.
-                    - Los costos deben ser solo números, sin símbolos de moneda.
-                    Texto a analizar: "${singleOrderText}"`;
+                    const prompt = `
+                    Actúa como un analista de datos experto. Extrae la información del siguiente texto de orden de compra y devuélvela como un objeto JSON.
+                    
+                    El JSON debe tener la siguiente estructura:
+                    {
+                      "provider": "nombre del proveedor",
+                      "orderId": "ID de la orden o N/A",
+                      "poNumber": "Número de PO o N/A",
+                      "date": "YYYY-MM-DD",
+                      "shipping": 0.00,
+                      "tax": 0.00,
+                      "items": [
+                        {
+                          "partNumber": "número de parte o N/A",
+                          "description": "descripción del artículo",
+                          "quantity": 0,
+                          "unitPrice": 0.00
+                        }
+                      ]
+                    }
 
-                    const rawResponse = await callGeminiAPI(combinedPrompt);
-                    const parsedData = parseAndValidateData(rawResponse);
-                    processedOrders.push(parsedData);
+                    Reglas importantes:
+                    - La fecha SIEMPRE debe estar en formato YYYY-MM-DD.
+                    - Los costos (shipping, tax, unitPrice) deben ser solo números, sin símbolos de moneda. Si no se encuentran, usa 0.00.
+                    - La cantidad (quantity) debe ser un número. Si no se encuentra, usa 1.
+                    - No incluyas nada más en tu respuesta, solo el objeto JSON.
+
+                    Texto a analizar:
+                    "${singleOrderText}"`;
+
+                    const rawResponse = await callGeminiAPI(prompt);
+                    const jsonData = JSON.parse(rawResponse);
+                    allOrdersData.push(jsonData);
                 }
 
-                currentOrderData = processedOrders;
-                displayResults(currentOrderData);
+                displayResults(allOrdersData);
 
             } catch (error) {
-                showToast(`Error: ${error.message}`, "error");
+                showToast(`Error al procesar: ${error.message}`, "error");
                 console.error(error);
             } finally {
                 loader.classList.add('hidden');
@@ -268,145 +266,251 @@
             }
         }
         
+        // --- UPDATED: Calls our own serverless function ---
         async function callGeminiAPI(prompt) {
-            // This URL points to your serverless function.
-            // Vercel will automatically route requests from /api/* to the corresponding file in the /api directory.
-            const url = '/api/gemini';
+            const url = '/api/gemini'; // This now points to our Vercel function
             
             try {
                 const response = await fetch(url, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    // You only send the prompt; the server adds the API key.
                     body: JSON.stringify({ prompt: prompt }) 
                 });
 
                 if (!response.ok) {
                     const errorData = await response.json();
-                    console.error("Error response from our API proxy:", errorData);
-                    throw new Error(`Proxy server error: ${response.status}`);
+                    throw new Error(errorData.error || `Error del servidor: ${response.status}`);
                 }
 
                 const data = await response.json();
-                if (!data.candidates || !data.candidates[0].content || !data.candidates[0].content.parts[0].text) {
-                    throw new Error("Unexpected API response via server.");
-                }
-                return data.candidates[0].content.parts[0].text;
+                return data.text; // Our serverless function will return the text in this property
 
             } catch (error) {
-                console.error("Could not call API via server", error);
-                throw error; // Re-throw the error to be handled by processOrder
+                console.error("No se pudo llamar a la API a través de la función del servidor", error);
+                throw error;
             }
-        }
-
-        function parseAndValidateData(rawText) {
-            const parts = rawText.split('~~');
-            if (parts.length < 1) throw new Error("AI response lacks the expected format (missing items).");
-            const mainInfo = parts[0].split('@@');
-            if (mainInfo.length < 6) throw new Error("Missing main fields in AI response.");
-            const items = [];
-            // Start from index 1 as index 0 is the main info
-            for (let i = 1; i < parts.length; i++) {
-                const itemDetails = parts[i].split('##');
-                if (itemDetails.length === 5) {
-                    items.push({
-                        partNumber: itemDetails[0].trim(),
-                        description: itemDetails[1].trim(),
-                        quantity: itemDetails[2].trim(),
-                        unitPrice: itemDetails[3].trim(),
-                        lineItemTotal: itemDetails[4].trim()
-                    });
-                }
-            }
-            return { provider: mainInfo[0].trim(), orderId: mainInfo[1].trim(), poNumber: mainInfo[2].trim(), date: mainInfo[3].trim(), shipping: mainInfo[4].trim(), tax: mainInfo[5].trim(), items: items };
         }
 
         function displayResults(orders) {
             const tableBody = document.getElementById('resultsTableBody');
             tableBody.innerHTML = '';
-            const formatForDisplay = (value) => (value === 'N/A' || value === undefined) ? '' : value;
-            orders.forEach(data => {
-                data.items.forEach((item, index) => {
-                    const row = document.createElement('tr');
-                    row.className = 'hover:bg-google-light-gray/10';
-                    const rowData = [formatForDisplay(data.poNumber || data.orderId), formatForDisplay(data.date), formatForDisplay(data.provider), formatForDisplay(item.description), formatForDisplay(item.quantity), formatForDisplay(item.unitPrice), formatForDisplay(item.lineItemTotal), '', '', ''];
-                    const checkboxCell = document.createElement('td');
-                    checkboxCell.className = 'px-2 py-3';
-                    checkboxCell.innerHTML = `<input type="checkbox" onchange="handleCheckboxClick()" class="row-checkbox bg-google-gray border-google-light-gray">`;
-                    row.appendChild(checkboxCell);
-                    // Start from index 1 for rowData, as checkbox is at 0
-                    rowData.forEach((cellData, cellIndex) => {
-                        const cell = document.createElement('td');
-                        cell.className = 'px-4 py-3';
-                        cell.textContent = cellData;
-                        // Editable cells start at index 7 (Requisitor) in the displayed table
-                        if (cellIndex >= 7) { 
-                            cell.contentEditable = true; 
-                            cell.classList.add('editable-cell');
-                        }
-                        row.appendChild(cell);
-                    });
-                    tableBody.appendChild(row);
+            const formatForDisplay = (value) => (value === 'N/A' || value === undefined || value === null) ? '' : value;
+            
+            const createRow = (rowData) => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-google-light-gray/10';
+                
+                const checkboxCell = document.createElement('td');
+                checkboxCell.className = 'px-2 py-3';
+                checkboxCell.innerHTML = `<input type="checkbox" onchange="handleCheckboxClick()" class="row-checkbox bg-google-gray border-google-light-gray">`;
+                row.appendChild(checkboxCell);
+
+                rowData.forEach((cellData, cellIndex) => {
+                    const cell = document.createElement('td');
+                    cell.className = 'px-4 py-3';
+                    // Align numeric cells to the right
+                    if ([4, 5, 6].includes(cellIndex)) {
+                        cell.classList.add('text-right');
+                    }
+                    cell.textContent = cellData;
+                    // Editable cells
+                    if ([7, 8, 9].includes(cellIndex)) { 
+                        cell.contentEditable = true; 
+                        cell.classList.add('editable-cell');
+                    }
+                    row.appendChild(cell);
                 });
-                const createSpecialRow = (label, value) => {
-                    const row = document.createElement('tr');
-                    row.className = 'hover:bg-google-light-gray/10';
-                    row.innerHTML = `<td class="px-2 py-3"><input type="checkbox" onchange="handleCheckboxClick()" class="row-checkbox bg-google-gray border-google-light-gray"></td> <td class="px-4 py-3">${formatForDisplay(data.poNumber || data.orderId)}</td><td class="px-4 py-3">${formatForDisplay(data.date)}</td><td class="px-4 py-3">${formatForDisplay(data.provider)}</td> <td class="px-4 py-3 font-medium">${label}</td> <td class="px-4 py-3">1</td> <td class="px-4 py-3">${value}</td> <td class="px-4 py-3">${value}</td> <td class="px-4 py-3 editable-cell" contenteditable="true"></td> <td class="px-4 py-3 editable-cell" contenteditable="true"></td> <td class="px-4 py-3 editable-cell" contenteditable="true"></td>`;
-                    return row;
-                };
-                if (formatForDisplay(data.shipping)) tableBody.appendChild(createSpecialRow('Envío', formatForDisplay(data.shipping)));
-                if (formatForDisplay(data.tax)) tableBody.appendChild(createSpecialRow('Impuesto', formatForDisplay(data.tax)));
+                return row;
+            }
+
+            orders.forEach(data => {
+                const reference = formatForDisplay(data.poNumber) || formatForDisplay(data.orderId);
+                const date = formatForDisplay(data.date);
+                const provider = formatForDisplay(data.provider);
+
+                data.items.forEach(item => {
+                    const quantity = parseFloat(item.quantity) || 0;
+                    const unitPrice = parseFloat(item.unitPrice) || 0;
+                    const subtotal = quantity * unitPrice;
+                    const rowData = [reference, date, provider, formatForDisplay(item.description), quantity, unitPrice.toFixed(2), subtotal.toFixed(2), '', '', ''];
+                    tableBody.appendChild(createRow(rowData));
+                });
+                
+                if (data.shipping > 0) {
+                    const rowData = [reference, date, provider, 'Envío', 1, data.shipping.toFixed(2), data.shipping.toFixed(2), '', '', ''];
+                    tableBody.appendChild(createRow(rowData));
+                }
+                if (data.tax > 0) {
+                     const rowData = [reference, date, provider, 'Impuesto', 1, data.tax.toFixed(2), data.tax.toFixed(2), '', '', ''];
+                    tableBody.appendChild(createRow(rowData));
+                }
             });
+
             updateTableFooter();
             const resultsContainer = document.getElementById('resultsContainer');
             resultsContainer.classList.remove('hidden');
             setTimeout(() => resultsContainer.classList.remove('opacity-0'), 10);
         }
         
-        // --- Dummy functions to avoid errors if they are not present ---
-        function updateTableFooter() { /* Placeholder */ }
-        function handleCheckboxClick() { /* Placeholder */ }
-        function toggleAllCheckboxes() { /* Placeholder */ }
-        function applyBatchEdit() { /* Placeholder */ }
-        async function suggestCategory() { /* Placeholder */ }
-        function copyTableToClipboard() { /* Placeholder */ }
+        function updateTableFooter() {
+            const tableBody = document.getElementById('resultsTableBody');
+            const footer = document.getElementById('resultsTableFooter');
+            footer.innerHTML = '';
+            
+            if (tableBody.rows.length === 0) return;
+
+            let totalQuantity = 0;
+            let totalSubtotal = 0;
+
+            Array.from(tableBody.rows).forEach(row => {
+                const qtyCell = row.cells[5];
+                const subtotalCell = row.cells[7];
+                if (qtyCell && !isNaN(parseFloat(qtyCell.textContent))) {
+                    totalQuantity += parseFloat(qtyCell.textContent);
+                }
+                if (subtotalCell && !isNaN(parseFloat(subtotalCell.textContent))) {
+                    totalSubtotal += parseFloat(subtotalCell.textContent);
+                }
+            });
+
+            const footerRow = document.createElement('tr');
+            footerRow.innerHTML = `
+                <td colspan="4" class="px-4 py-3 text-left">TOTALES</td>
+                <td class="px-4 py-3">${totalQuantity.toLocaleString()}</td>
+                <td colspan="1" class="px-4 py-3"></td>
+                <td class="px-4 py-3">${totalSubtotal.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td>
+                <td colspan="3"></td>
+            `;
+            footer.appendChild(footerRow);
+        }
+
+        function handleCheckboxClick() {
+            const checkboxes = document.querySelectorAll('.row-checkbox');
+            const selectedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const batchContainer = document.getElementById('batchEditContainer');
+            
+            if (selectedCount > 0) {
+                document.getElementById('selectionCount').textContent = `${selectedCount} fila(s) seleccionada(s)`;
+                batchContainer.classList.remove('hidden');
+                setTimeout(() => batchContainer.classList.remove('opacity-0'), 10);
+            } else {
+                batchContainer.classList.add('opacity-0');
+                setTimeout(() => batchContainer.classList.add('hidden'), 300);
+            }
+            document.getElementById('selectAllCheckbox').checked = selectedCount === checkboxes.length;
+        }
+
+        function toggleAllCheckboxes(checked) {
+            document.querySelectorAll('.row-checkbox').forEach(cb => cb.checked = checked);
+            handleCheckboxClick();
+        }
+
+        function applyBatchEdit() {
+            const requisitor = document.getElementById('batchRequisitor').value;
+            const ctaCargo = document.getElementById('batchCtaCargo').value;
+            const destino = document.getElementById('batchDestino').value;
+
+            document.querySelectorAll('.row-checkbox:checked').forEach(cb => {
+                const row = cb.closest('tr');
+                if (requisitor) row.cells[8].textContent = requisitor;
+                if (ctaCargo) row.cells[9].textContent = ctaCargo;
+                if (destino) row.cells[10].textContent = destino;
+            });
+
+            showToast('Cambios aplicados a la selección.', 'success');
+        }
+
+        async function suggestCategory() {
+            const selectedCheckboxes = document.querySelectorAll('.row-checkbox:checked');
+            if (selectedCheckboxes.length === 0) {
+                showToast('Selecciona al menos una fila para sugerir una categoría.', 'info');
+                return;
+            }
+            
+            const loader = document.getElementById('loader');
+            const loaderText = document.getElementById('loaderText');
+            loader.classList.remove('hidden');
+            
+            try {
+                for (let i = 0; i < selectedCheckboxes.length; i++) {
+                    const checkbox = selectedCheckboxes[i];
+                    const row = checkbox.closest('tr');
+                    const description = row.cells[4].textContent;
+                    
+                    loaderText.textContent = `Sugiriendo para "${description.substring(0,20)}..." (${i+1}/${selectedCheckboxes.length})`;
+
+                    const prompt = `
+                        Basado en la siguiente descripción de un artículo de una orden de compra, sugiere una "Cuenta de Cargo" contable.
+                        La cuenta debe ser corta, descriptiva y en español. Ejemplos: "Mantenimiento Equipo", "Insumos Oficina", "Activo Fijo Computo", "Herramientas Producción".
+                        Responde únicamente con el nombre de la cuenta sugerida, sin explicaciones adicionales.
+                        Descripción: "${description}"
+                    `;
+                    
+                    const category = await callGeminiAPI(prompt);
+                    row.cells[9].textContent = category.replace(/["']/g, '').trim();
+                }
+                showToast('Sugerencias completadas.', 'success');
+
+            } catch (error) {
+                showToast(`Error al sugerir: ${error.message}`, 'error');
+            } finally {
+                loader.classList.add('hidden');
+                loaderText.textContent = 'Consultando a la IA...';
+            }
+        }
+        
+        function copyTableToClipboard() {
+            const table = document.getElementById('resultsTable');
+            let textToCopy = '';
+            const headers = Array.from(table.querySelectorAll('thead th')).slice(1).map(th => th.textContent);
+            textToCopy += headers.join('\t') + '\n';
+            Array.from(table.querySelectorAll('tbody tr')).forEach(row => {
+                const cells = Array.from(row.querySelectorAll('td')).slice(1).map(td => td.textContent.trim());
+                textToCopy += cells.join('\t') + '\n';
+            });
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                showToast('Tabla copiada al portapapeles.', 'success');
+            }, (err) => {
+                showToast('Error al copiar la tabla.', 'error');
+                console.error('Error al copiar: ', err);
+            });
+        }
+        
         function resetInterface() {
             document.getElementById('orderText').value = '';
             document.getElementById('resultsContainer').classList.add('hidden', 'opacity-0');
             document.getElementById('resultsTableBody').innerHTML = '';
+            document.getElementById('resultsTableFooter').innerHTML = '';
+            handleCheckboxClick(); // Hides batch edit
         }
         
         function showToast(message, type = 'info') {
             const toast = document.getElementById('toast');
             toast.textContent = message;
-
+            
+            // Clear any existing hide timer
             if (toastTimeout) clearTimeout(toastTimeout);
             
-            toast.classList.remove('bg-green-500', 'bg-red-500', 'bg-blue-500');
+            // Set colors, removing old ones first
+            toast.classList.remove('bg-green-600', 'bg-red-600', 'bg-blue-600');
+            const typeClasses = { success: 'bg-green-600', error: 'bg-red-600', info: 'bg-blue-600' };
+            toast.classList.add(typeClasses[type] || typeClasses['info']);
 
-            const typeClasses = { success: 'bg-green-500', error: 'bg-red-500', info: 'bg-blue-500' };
-            toast.classList.add(typeClasses[type] || typeClasses['info'], 'opacity-100', 'visible');
+            // Make the toast visible and start the fade-in transition
+            toast.classList.remove('opacity-0', 'invisible');
             
-            const duration = 3000; 
-
+            // Set a timer to hide the toast after 3 seconds
             toastTimeout = setTimeout(() => {
-                toast.classList.remove('opacity-100', 'visible');
-            }, duration);
+                // Add classes back to hide and trigger fade-out transition
+                toast.classList.add('opacity-0', 'invisible');
+            }, 3000);
         }
         
         // --- Google Sheets & Auth Logic ---
-        function gapiLoaded() {
-            gapi.load('client', initializeGapiClient);
-        }
-
+        function gapiLoaded() { gapi.load('client', initializeGapiClient); }
         async function initializeGapiClient() {
-            await gapi.client.init({
-                discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
-            });
-            gapiInited = true;
-            maybeEnableButtons();
+            await gapi.client.init({ discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"] });
         }
-
         function gisLoaded() {
             tokenClient = google.accounts.oauth2.initTokenClient({
                 client_id: DEFAULT_CLIENT_ID,
@@ -417,26 +521,14 @@
                         updateUiForSignIn(true);
                         showToast('Sesión iniciada correctamente.', 'success');
                     } else {
-                        console.error("Error en la autenticación:", tokenResponse);
                         showToast("No se pudo iniciar sesión.", "error");
                     }
                 },
             });
-            gisInited = true;
-            maybeEnableButtons();
         }
-
-        function maybeEnableButtons() {
-            // This function now just checks if both scripts are loaded.
-            // UI state is handled by the default HTML and updateUiForSignIn.
-        }
-
         function handleAuthClick() {
-            if (!gapi.client.getToken()) {
-                tokenClient.requestAccessToken({prompt: ''}); // Use '' for a smoother experience
-            }
+            if (tokenClient) tokenClient.requestAccessToken({prompt: 'consent'});
         }
-
         function handleSignoutClick() {
             const token = gapi.client.getToken();
             if (token !== null) {
@@ -447,70 +539,39 @@
                 });
             }
         }
-
         function updateUiForSignIn(isSignedIn) {
-            const authorizeButton = document.getElementById('authorize_button');
-            const signoutButton = document.getElementById('signout_button');
-            const sendToSheetsButton = document.getElementById('send_to_sheets_button');
-
-            if (isSignedIn) {
-                authorizeButton.classList.add('hidden');
-                signoutButton.classList.remove('hidden');
-                sendToSheetsButton.disabled = false;
-                sendToSheetsButton.classList.remove('cursor-not-allowed', 'disabled:opacity-40');
-            } else {
-                authorizeButton.classList.remove('hidden');
-                signoutButton.classList.add('hidden');
-                sendToSheetsButton.disabled = true;
-                sendToSheetsButton.classList.add('cursor-not-allowed', 'disabled:opacity-40');
-            }
+            document.getElementById('authorize_button').classList.toggle('hidden', isSignedIn);
+            document.getElementById('signout_button').classList.toggle('hidden', !isSignedIn);
+            const sendButton = document.getElementById('send_to_sheets_button');
+            sendButton.disabled = !isSignedIn;
+            sendButton.classList.toggle('cursor-not-allowed', !isSignedIn);
+            sendButton.classList.toggle('disabled:opacity-40', !isSignedIn);
         }
-
         async function appendDataToSheet() {
             if (!gapi.client.getToken()) {
-                showToast('Debes iniciar sesión para enviar datos.', 'error');
-                return;
+                showToast('Debes iniciar sesión para enviar datos.', 'error'); return;
             }
-
             const sendButton = document.getElementById('send_to_sheets_button');
             sendButton.disabled = true;
             sendButton.textContent = 'Enviando...';
-
             try {
                 const rows = Array.from(document.getElementById('resultsTableBody').rows);
                 if (rows.length === 0) {
-                    showToast('No hay datos para enviar.', 'error');
+                    showToast('No hay datos para enviar.', 'info'); 
+                    sendButton.disabled = false;
+                    sendButton.textContent = 'Enviar a Google Sheets';
                     return;
                 }
-
-                const values = rows.map(row => {
-                    const cells = Array.from(row.cells).slice(1); // Skip checkbox cell
-                    return cells.map(cell => cell.textContent);
-                });
-
-                const body = { values: values };
-
+                const values = rows.map(row => Array.from(row.cells).slice(1).map(cell => cell.textContent));
                 const response = await gapi.client.sheets.spreadsheets.values.append({
-                    spreadsheetId: SPREADSHEET_ID,
-                    range: SHEET_NAME,
-                    valueInputOption: 'USER_ENTERED',
-                    resource: body,
+                    spreadsheetId: SPREADSHEET_ID, range: SHEET_NAME,
+                    valueInputOption: 'USER_ENTERED', resource: { values: values },
                 });
-
-                const result = response.result;
-                if (result.updates && result.updates.updatedCells > 0) {
-                    showToast(`${result.updates.updatedCells} celdas añadidas correctamente.`, 'success');
-                } else {
-                    showToast('No se pudo añadir la información a la hoja.', 'error');
-                }
-
+                showToast(`${response.result.updates.updatedCells} celdas añadidas.`, 'success');
             } catch (err) {
+                const error = err.result?.error?.message || 'Revisa la consola para más detalles.';
+                showToast(`Error: ${error}`, 'error');
                 console.error("API Error: ", err);
-                let errorMessage = 'Error al enviar datos. Revisa la consola para más detalles.';
-                if (err.result && err.result.error) {
-                    errorMessage = `Error de Google Sheets: ${err.result.error.message}`;
-                }
-                showToast(errorMessage, 'error');
             } finally {
                 sendButton.disabled = false;
                 sendButton.textContent = 'Enviar a Google Sheets';
@@ -523,12 +584,10 @@
             document.getElementById('sheetNameInput').value = SHEET_NAME;
             document.getElementById('settingsModal').classList.remove('hidden');
         }
-        function hideSettingsModal() {
-            document.getElementById('settingsModal').classList.add('hidden');
-        }
+        function hideSettingsModal() { document.getElementById('settingsModal').classList.add('hidden'); }
         function saveSettings() {
-            SPREADSHEET_ID = document.getElementById('spreadsheetIdInput').value || DEFAULT_SPREADSHEET_ID;
-            SHEET_NAME = document.getElementById('sheetNameInput').value || DEFAULT_SHEET_NAME;
+            SPREADSHEET_ID = document.getElementById('spreadsheetIdInput').value.trim() || DEFAULT_SPREADSHEET_ID;
+            SHEET_NAME = document.getElementById('sheetNameInput').value.trim() || DEFAULT_SHEET_NAME;
             localStorage.setItem('spreadsheetId', SPREADSHEET_ID);
             localStorage.setItem('sheetName', SHEET_NAME);
             showToast('Configuración guardada.', 'success');
@@ -539,111 +598,74 @@
             SHEET_NAME = localStorage.getItem('sheetName') || DEFAULT_SHEET_NAME;
         }
 
-        // --- Easter Egg Initialization ---
+        // --- Easter Egg & Theme Logic ---
+        const themes = {
+            matrix: "Matrix", synthwave: "Synthwave", blueprint: "Blueprint", retro: "Retro"
+        };
+        let discoveredThemes = new Set();
         function applyTheme(themeName) {
-            document.body.classList.remove('matrix-theme', 'synthwave-theme', 'blueprint-theme', 'retro-theme');
+            document.body.className = document.body.className.replace(/\b\w+-theme\b/g, '').trim();
             if (themeName && themeName !== 'default') {
                 document.body.classList.add(`${themeName}-theme`);
             }
+            localStorage.setItem('selectedTheme', themeName);
         }
-
-        function initializeEasterEggs() {
-            const mainTitle = document.querySelector('h1');
-            let titleClickCount = 0;
-            mainTitle.addEventListener('click', () => {
-                titleClickCount++;
-                if (titleClickCount === 7) {
-                    showToast('Creado con ❤️ por un humano y Gemini.', 'info');
-                    titleClickCount = 0;
+        function updateThemeSelector() {
+            const selector = document.getElementById('themeSelector');
+            selector.innerHTML = '<option value="default">Default</option>';
+            Object.keys(themes).forEach(key => {
+                if (discoveredThemes.has(key)) {
+                    const option = document.createElement('option');
+                    option.value = key;
+                    option.textContent = themes[key];
+                    selector.appendChild(option);
                 }
             });
+            selector.value = localStorage.getItem('selectedTheme') || 'default';
+        }
+        function initializeApp() {
+            loadSettings();
+            const savedDiscovered = JSON.parse(localStorage.getItem('discoveredThemes')) || [];
+            discoveredThemes = new Set(savedDiscovered);
+            const selectedTheme = localStorage.getItem('selectedTheme') || 'default';
+            applyTheme(selectedTheme);
+            updateThemeSelector();
 
-            // Theme keyword triggers
-            const orderTextArea = document.getElementById('orderText');
-            orderTextArea.addEventListener('input', () => { 
-                const text = orderTextArea.value.toLowerCase();
-                let currentTheme = null;
-                if (text.includes('matrix')) { currentTheme = 'matrix'; } 
-                else if (text.includes('synthwave')) { currentTheme = 'synthwave'; } 
-                else if (text.includes('blueprint')) { currentTheme = 'blueprint'; }
-                
-                if(currentTheme){
-                    if (!discoveredThemes.has(currentTheme)) {
-                        discoveredThemes.add(currentTheme);
+            document.getElementById('orderText').addEventListener('input', (e) => {
+                const text = e.target.value.toLowerCase();
+                Object.keys(themes).forEach(theme => {
+                    if (text.includes(theme) && !discoveredThemes.has(theme)) {
+                        discoveredThemes.add(theme);
                         localStorage.setItem('discoveredThemes', JSON.stringify(Array.from(discoveredThemes)));
+                        showToast(`Tema desbloqueado: ${themes[theme]}`, 'info');
+                        updateThemeSelector();
                     }
-                    applyTheme(currentTheme);
-                    document.getElementById('themeSelector').value = currentTheme;
-                }
-
-                if (discoveredThemes.size >= TOTAL_THEMES) {
-                    const selectorContainer = document.getElementById('themeSelectorContainer');
-                    if (selectorContainer.classList.contains('hidden')) {
-                        selectorContainer.classList.remove('hidden');
-                        setTimeout(() => selectorContainer.classList.remove('opacity-0'), 10);
-                        localStorage.setItem('themesUnlocked', 'true');
-                    }
-                }
+                });
             });
-            document.getElementById('themeSelector').addEventListener('change', (event) => { applyTheme(event.target.value); });
+            document.getElementById('themeSelector').addEventListener('change', (e) => applyTheme(e.target.value));
             
             const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
             let konamiPosition = 0;
             document.addEventListener('keydown', (e) => {
-                const requiredKey = konamiCode[konamiPosition];
-                const keyPressed = (e.key.length > 1) ? e.key : e.key.toLowerCase(); 
-
-                if (keyPressed === requiredKey) {
+                if (e.key.toLowerCase() === konamiCode[konamiPosition].toLowerCase()) {
                     konamiPosition++;
+                    if (konamiPosition === konamiCode.length) {
+                        if (!discoveredThemes.has('retro')) {
+                             showToast('Código Konami Activado! Tema Retro Desbloqueado.', 'success');
+                            discoveredThemes.add('retro');
+                            localStorage.setItem('discoveredThemes', JSON.stringify(Array.from(discoveredThemes)));
+                            updateThemeSelector();
+                        }
+                        document.getElementById('themeSelector').value = 'retro';
+                        applyTheme('retro');
+                        konamiPosition = 0;
+                    }
                 } else {
-                    konamiPosition = 0;
-                    if (keyPressed === konamiCode[0]) {
-                        konamiPosition = 1;
-                    }
-                }
-
-                if (konamiPosition === konamiCode.length) {
-                    showToast('Código Konami Activado! Tema Retro Desbloqueado.', 'success');
-                    const selector = document.getElementById('themeSelector');
-                    if (!document.querySelector('option[value="retro"]')) {
-                        const retroOption = document.createElement('option');
-                        retroOption.value = 'retro';
-                        retroOption.textContent = 'Retro';
-                        selector.appendChild(retroOption);
-                    }
-                    selector.value = 'retro';
-                    applyTheme('retro');
-                    
-                    const selectorContainer = document.getElementById('themeSelectorContainer');
-                    selectorContainer.classList.remove('hidden');
-                    setTimeout(() => selectorContainer.classList.remove('opacity-0'), 10);
-                    localStorage.setItem('themesUnlocked', 'true');
                     konamiPosition = 0;
                 }
             });
         }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            loadSettings();
-            initializeEasterEggs();
-
-            const savedThemes = JSON.parse(localStorage.getItem('discoveredThemes')) || [];
-            discoveredThemes = new Set(savedThemes);
-
-            if (localStorage.getItem('themesUnlocked') === 'true') {
-                const selectorContainer = document.getElementById('themeSelectorContainer');
-                selectorContainer.classList.remove('hidden');
-                setTimeout(() => selectorContainer.classList.remove('opacity-0'), 10);
-
-                const selector = document.getElementById('themeSelector');
-                 if (!document.querySelector('option[value="retro"]')) {
-                    const retroOption = document.createElement('option');
-                    retroOption.value = 'retro';
-                    retroOption.textContent = 'Retro';
-                    selector.appendChild(retroOption);
-                }
-            }
-        });
+        window.addEventListener('DOMContentLoaded', initializeApp);
     </script>
     
     <!-- Google API Scripts -->
@@ -652,4 +674,5 @@
 
 </body>
 </html>
+
 
