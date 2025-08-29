@@ -219,9 +219,9 @@
                 for (let i = 0; i < allOrderTexts.length; i++) {
                     const singleOrderText = allOrderTexts[i].trim();
                     loaderText.textContent = `Procesando orden ${i + 1} de ${allOrderTexts.length}...`;
-                    
+
                     const prompt = `
-                    Actúa como un analista de datos experto. Extrae la información del siguiente texto de orden de compra y devuélvela como un objeto JSON.
+                    Actúa como un analista de datos experto. Extrae la información del siguiente texto de orden de compra y devélvela como un objeto JSON.
                     
                     El JSON debe tener la siguiente estructura:
                     {
@@ -251,6 +251,11 @@
                     "${singleOrderText}"`;
 
                     const rawResponse = await callGeminiAPI(prompt);
+                    
+                    if (typeof rawResponse !== 'string' || !rawResponse.trim().startsWith('{')) {
+                        throw new Error("La respuesta de la API no es un JSON válido.");
+                    }
+
                     const jsonData = JSON.parse(rawResponse);
                     allOrdersData.push(jsonData);
                 }
@@ -266,9 +271,7 @@
             }
         }
         
-        // --- UPDATED: Calls our own serverless function ---
         async function callGeminiAPI(prompt) {
-            // FIX: Construct an absolute URL to prevent parsing errors when running locally or on Vercel.
             const url = new URL('/api/gemini', window.location.origin).href;
             
             try {
@@ -279,12 +282,27 @@
                 });
 
                 if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.error || `Error del servidor: ${response.status}`);
+                    if (response.status === 404) {
+                        throw new Error("API (404): La función '/api/gemini' no se encontró. Revisa la configuración de tu proyecto en Vercel.");
+                    }
+                    
+                    let errorMsg = `Error del servidor: ${response.status} ${response.statusText}`;
+                    const errorText = await response.text();
+                    try {
+                        const errorData = JSON.parse(errorText);
+                        if (errorData.error) {
+                            errorMsg = errorData.error;
+                        }
+                    } catch (e) {
+                        if (errorText) {
+                            errorMsg = errorText;
+                        }
+                    }
+                    throw new Error(errorMsg);
                 }
 
                 const data = await response.json();
-                return data.text; // Our serverless function will return the text in this property
+                return data.text;
 
             } catch (error) {
                 console.error("No se pudo llamar a la API a través de la función del servidor", error);
@@ -309,12 +327,10 @@
                 rowData.forEach((cellData, cellIndex) => {
                     const cell = document.createElement('td');
                     cell.className = 'px-4 py-3';
-                    // Align numeric cells to the right
                     if ([4, 5, 6].includes(cellIndex)) {
                         cell.classList.add('text-right');
                     }
                     cell.textContent = cellData;
-                    // Editable cells
                     if ([7, 8, 9].includes(cellIndex)) { 
                         cell.contentEditable = true; 
                         cell.classList.add('editable-cell');
@@ -482,27 +498,22 @@
             document.getElementById('resultsContainer').classList.add('hidden', 'opacity-0');
             document.getElementById('resultsTableBody').innerHTML = '';
             document.getElementById('resultsTableFooter').innerHTML = '';
-            handleCheckboxClick(); // Hides batch edit
+            handleCheckboxClick(); 
         }
         
         function showToast(message, type = 'info') {
             const toast = document.getElementById('toast');
             toast.textContent = message;
             
-            // Clear any existing hide timer
             if (toastTimeout) clearTimeout(toastTimeout);
             
-            // Set colors, removing old ones first
             toast.classList.remove('bg-green-600', 'bg-red-600', 'bg-blue-600');
             const typeClasses = { success: 'bg-green-600', error: 'bg-red-600', info: 'bg-blue-600' };
             toast.classList.add(typeClasses[type] || typeClasses['info']);
 
-            // Make the toast visible and start the fade-in transition
             toast.classList.remove('opacity-0', 'invisible');
             
-            // Set a timer to hide the toast after 3 seconds
             toastTimeout = setTimeout(() => {
-                // Add classes back to hide and trigger fade-out transition
                 toast.classList.add('opacity-0', 'invisible');
             }, 3000);
         }
@@ -675,6 +686,12 @@
 
 </body>
 </html>
+
+
+
+</body>
+</html>
+
 
 
 
