@@ -24,9 +24,10 @@ export default async function handler(req, res) {
   try {
     // 4. Inicializar el modelo de IA de Google
     const genAI = new GoogleGenerativeAI(apiKey);
-    // ACTUALIZACIÓN: Se especifica que la respuesta debe ser JSON
+    
+    // VERSIÓN FINAL: Usando el modelo más reciente "flash" y forzando la salida a JSON
     const model = genAI.getGenerativeModel({ 
-        model: "gemini-pro",
+        model: "gemini-1.5-flash-latest",
         generationConfig: { responseMimeType: "application/json" }
     });
 
@@ -36,13 +37,15 @@ export default async function handler(req, res) {
     const text = response.text();
 
     // 6. Enviar la respuesta de vuelta al cliente
-    // La respuesta ya debería ser un JSON limpio, no necesita más limpieza.
     res.status(200).json({ text: text });
 
   } catch (error) {
-    // 7. Manejo de errores
+    // 7. Manejo de errores mejorado para dar más detalles
     console.error("Error al llamar a la API de Gemini:", error);
-    res.status(500).json({ error: `Error al comunicarse con la API de Gemini: ${error.message}` });
+    res.status(500).json({ error: `Error en la función del servidor: ${error.message}` });
   }
 }
+
+
+
 
